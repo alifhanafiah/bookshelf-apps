@@ -2,98 +2,60 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
-    />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Bookshelf Apps</title>
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="style.css" />
-    <link
-      rel="shortcut icon"
-      href="img/book-bookmark-solid.svg"
-      type="image/x-icon"
-    />
+    <script src="js/script.js" defer></script>
+    <link rel="stylesheet" href="css/style.css" />
   </head>
+
   <body>
-    <header class="head_bar">
-      <h1 class="head_bar__title">Bookshelf Apps</h1>
+    <header>
+      <h1>Book List</h1>
     </header>
-    <main>
-      <section class="input_section">
-        <h2>Masukkan Buku Baru</h2>
-        <form id="inputBook">
-          <div class="input">
-            <label for="inputBookTitle">Judul</label>
-            <input id="inputBookTitle" type="text" required />
+
+    <div class="wrapper">
+      <div class="container bg-white shadow" id="add-booklist">
+        <h2 class="container-header text-center">Masukkan data buku</h2>
+        <form class="form" action="#" id="form" autocomplete="off">
+          <div class="form-group form-title">
+            <label for="title">Judul</label>
+            <input type="text" id="title" name="title" required />
           </div>
-          <div class="input">
-            <label for="inputBookAuthor">Penulis</label>
-            <input id="inputBookAuthor" type="text" required />
+          <div class="form-group form-title">
+            <label for="writer">Penulis</label>
+            <input type="text" id="writer" name="writer" required />
           </div>
-          <div class="input">
-            <label for="inputBookYear">Tahun</label>
-            <input id="inputBookYear" type="number" required />
+          <div class="form-group form-title">
+            <label for="year">Tahun</label>
+            <input type="number" id="year" name="year" required />
           </div>
-          <div class="input_inline">
-            <label for="inputBookIsComplete">Selesai dibaca</label>
-            <input id="inputBookIsComplete" type="checkbox" />
-          </div>
-          <button id="bookSubmit" type="submit">
-            Masukkan Buku ke rak <span>Belum selesai dibaca</span>
-          </button>
+          <input type="submit" value="👌" name="Submit" class="btn-submit" />
         </form>
-      </section>
+      </div>
 
-      <section class="search_section">
-        <h2>Cari Buku (Opsional)</h2>
-        <form id="searchBook">
-          <label for="searchBookTitle">Judul</label>
-          <input id="searchBookTitle" type="text" />
-          <button id="searchSubmit" type="submit">Cari</button>
-        </form>
-      </section>
+      <!-- fitur filter -->
+      <div class="container">
+        <h2 class="container-header">Cari judul buku</h2>
+        <input
+          type="search"
+          name="search"
+          id="search"
+          placeholder="Search..."
+        />
+      </div>
 
-      <section class="book_shelf">
-        <h2>Belum selesai dibaca</h2>
+      <!-- container booklist yang belum dibaca -->
+      <div class="container">
+        <h2 class="container-header">Belum selesai dibaca</h2>
+        <div class="list-item" id="booklists"></div>
+      </div>
 
-        <div id="incompleteBookshelfList" class="book_list">
-          <!--      <article class="book_item">-->
-          <!--        <h3>Book Title</h3>-->
-          <!--        <p>Penulis: John Doe</p>-->
-          <!--        <p>Tahun: 2002</p>-->
-          <!--    -->
-          <!--        <div class="action">-->
-          <!--          <button class="green">Selesai dibaca</button>-->
-          <!--          <button class="red">Hapus buku</button>-->
-          <!--        </div>-->
-          <!--      </article>-->
-        </div>
-      </section>
-
-      <section class="book_shelf">
-        <h2>Selesai dibaca</h2>
-
-        <div id="completeBookshelfList" class="book_list">
-          <!--      <article class="book_item">-->
-          <!--        <h3>Book Title</h3>-->
-          <!--        <p>Penulis: John Doe</p>-->
-          <!--        <p>Tahun: 2002</p>-->
-          <!--        -->
-          <!--        <div class="action">-->
-          <!--          <button class="green">Belum selesai di Baca</button>-->
-          <!--          <button class="red">Hapus buku</button>-->
-          <!--        </div>-->
-          <!--      </article>-->
-        </div>
-      </section>
-    </main>
-
-    <script src="main.js"></script>
+      <!-- container booklist yang sudah dibaca -->
+      <div class="container">
+        <h2 class="container-header">Selesai dibaca</h2>
+        <div class="list-item" id="completed-booklists"></div>
+      </div>
+    </div>
   </body>
 </html>
