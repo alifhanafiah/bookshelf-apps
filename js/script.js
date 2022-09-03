@@ -1,7 +1,6 @@
 let booklists = [];
 
 const RENDER_EVENT = "render-booklist";
-const SAVED_EVENT = "saved-booklist";
 
 const STORAGE_KEY = "BOOKLIST_APPS";
 
@@ -11,10 +10,25 @@ search.addEventListener("input", () => {
   // semuanya di ubah ke lowercase agar tidak case sensitive
   const valueSearch = search.value.toLowerCase();
 
-  // mengambil semua value judul
-  const titles = document.querySelectorAll(".inner > h2");
+  // mengambil semua container
+  const containers = document.querySelectorAll(".item");
 
-  console.log(titles);
+  for (const container of containers) {
+    // mengambil semua judul buku dalam tiap container
+    const titles = container.querySelectorAll("h2");
+
+    for (const title of titles) {
+      // semuanya di ubah ke lowercase agar tidak case sensitive
+      const valueTitle = title.innerText.toLowerCase();
+
+      // includes mengecek apakah text di valueSearch terdapat pada valueTitle
+      if (valueTitle.includes(valueSearch)) {
+        container.style.display = null;
+      } else {
+        container.style.display = "none";
+      }
+    }
+  }
 });
 
 const submit = document.querySelector("#form");
@@ -97,15 +111,21 @@ const addBookToCompleted = (booklistId) => {
 };
 
 const removeBookFromCompleted = (booklistId) => {
-  const booklistTarget = findBooklistIndex(booklistId);
+  const confirmRemove = confirm("Are you sure you want to remove this book?");
 
-  if (booklistTarget === -1) return;
+  if (confirmRemove) {
+    const booklistTarget = findBooklistIndex(booklistId);
 
-  booklists.splice(booklistTarget, 1);
+    if (booklistTarget === -1) return;
 
-  document.dispatchEvent(new Event(RENDER_EVENT));
+    booklists.splice(booklistTarget, 1);
 
-  saveData();
+    document.dispatchEvent(new Event(RENDER_EVENT));
+
+    saveData();
+  } else {
+    return;
+  }
 };
 
 const undoBookFromCompleted = (booklistId) => {
@@ -189,15 +209,8 @@ function saveData() {
     const parsed = JSON.stringify(booklists);
 
     localStorage.setItem(STORAGE_KEY, parsed);
-
-    document.dispatchEvent(new Event(SAVED_EVENT));
   }
 }
-
-document.addEventListener(SAVED_EVENT, function () {
-  console.log(localStorage.getItem(STORAGE_KEY));
-  // alert("you have been adding todos successfully");
-});
 
 function loadDataFromStorage() {
   const serializedData = localStorage.getItem(STORAGE_KEY);
