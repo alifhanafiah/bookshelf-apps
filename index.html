@@ -11,51 +11,59 @@
 
   <body>
     <header>
-      <h1>Book List</h1>
+      <h1>Welcome to my Bookshelf App</h1>
     </header>
 
-    <div class="wrapper">
-      <div class="container bg-white shadow" id="add-booklist">
-        <h2 class="container-header text-center">Masukkan data buku</h2>
-        <form class="form" action="#" id="form" autocomplete="off">
-          <div class="form-group form-title">
-            <label for="title">Judul</label>
-            <input type="text" id="title" name="title" required />
-          </div>
-          <div class="form-group form-title">
-            <label for="writer">Penulis</label>
-            <input type="text" id="writer" name="writer" required />
-          </div>
-          <div class="form-group form-title">
-            <label for="year">Tahun</label>
-            <input type="number" id="year" name="year" required />
-          </div>
-          <input type="submit" value="👌" name="Submit" class="btn-submit" />
-        </form>
+    <main>
+      <div class="wrapper">
+        <div class="container bg-white shadow" id="add-booklist">
+          <h2 class="container-header text-center">Masukkan data buku</h2>
+          <form class="form" action="#" id="form" autocomplete="off">
+            <div class="form-group form-title">
+              <label for="title">Judul</label>
+              <input type="text" id="title" name="title" required />
+            </div>
+            <div class="form-group form-title">
+              <label for="writer">Penulis</label>
+              <input type="text" id="writer" name="writer" required />
+            </div>
+            <div class="form-group form-title">
+              <label for="year">Tahun</label>
+              <input type="number" id="year" name="year" required />
+            </div>
+            <input type="submit" value=" " name="Submit" class="btn-submit" />
+          </form>
+        </div>
+        <!-- fitur filter -->
+        <div class="container">
+          <h2 class="container-header">Cari judul buku</h2>
+          <input
+            type="search"
+            name="search"
+            id="search"
+            placeholder="Search..."
+          />
+        </div>
+        <!-- container booklist yang belum dibaca -->
+        <div class="container" id="start-booklist">
+          <h2 class="container-header">Belum selesai dibaca</h2>
+          <div class="list-item" id="booklists"></div>
+        </div>
+        <!-- container booklist yang sudah dibaca -->
+        <div class="container">
+          <h2 class="container-header">Selesai dibaca</h2>
+          <div class="list-item" id="completed-booklists"></div>
+        </div>
       </div>
+    </main>
 
-      <!-- fitur filter -->
-      <div class="container">
-        <h2 class="container-header">Cari judul buku</h2>
-        <input
-          type="search"
-          name="search"
-          id="search"
-          placeholder="Search..."
-        />
-      </div>
-
-      <!-- container booklist yang belum dibaca -->
-      <div class="container">
-        <h2 class="container-header">Belum selesai dibaca</h2>
-        <div class="list-item" id="booklists"></div>
-      </div>
-
-      <!-- container booklist yang sudah dibaca -->
-      <div class="container">
-        <h2 class="container-header">Selesai dibaca</h2>
-        <div class="list-item" id="completed-booklists"></div>
-      </div>
-    </div>
+    <!-- footer -->
+    <footer class="footer">
+      <center>
+        <p class="footer__desc">
+          <b>Copyright &copy; 2022</b> Muhammad Alif Hanafiah
+        </p>
+      </center>
+    </footer>
   </body>
 </html>

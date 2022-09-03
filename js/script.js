@@ -35,6 +35,10 @@ const submit = document.querySelector("#form");
 submit.addEventListener("submit", (e) => {
   addBooklist();
 
+  // agar auto scroll ke list buku
+  document.querySelector("#start-booklist").scrollIntoView();
+
+  // mengosongkan field input
   document.querySelector("#title").value = "";
   document.querySelector("#writer").value = "";
   document.querySelector("#year").value = "";

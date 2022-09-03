@@ -9,19 +9,24 @@
 }
 
 :root {
-  --primary-color: #00adb5;
+  --primary-color: #183153;
+  --secondary-color: #e0e0e0;
+
+  scroll-behavior: smooth;
 }
 
 html,
 body {
   font-family: "Poppins", sans-serif;
+  background-color: var(--secondary-color);
 }
 
 header {
-  background: var(--primary-color);
-  padding: 2em;
-  color: white;
-  text-align: center;
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
 }
 
 .wrapper {
@@ -33,21 +38,25 @@ header {
 
 .wrapper .container {
   width: 1024px;
-  padding: 16px;
-  margin-block: 1em;
+  padding: 2em;
+  margin-block: 2em;
   flex-grow: 1;
   height: fit-content;
 
-  border-radius: 20px;
-  background: #ffffff;
-  box-shadow: 20px 20px 60px #d9d9d9, -20px -20px 60px #ffffff;
+  border-radius: 50px;
+  background-color: #e0e0e0;
+  box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
+}
+
+#add-booklist {
+  position: relative;
 }
 
 .item {
   border-radius: 16px;
   margin-top: 16px;
   padding: 12px 24px 12px 24px;
-  background: white;
+  background-color: var(--secondary-color);
   display: flex;
   align-items: center;
 }
@@ -79,36 +88,43 @@ header {
 }
 
 .shadow {
-  box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05),
-    0 15px 40px rgba(166, 173, 201, 0.2);
+  border-radius: 1em;
+  background-color: #ffffff;
+  box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
 }
 
 input[type="text"],
-input[type="number"] {
-  font-family: "Poppins", sans-serif;
-  background: #f5f1ff;
-  border: 2px solid var(--primary-color);
-  border-radius: 8px;
-  padding: 16px;
-  margin-bottom: 8px;
-  font-size: 24px;
+input[type="number"],
+input[type="search"],
+.btn-submit {
+  display: block;
+  padding: 1em;
+  margin: 1em auto;
+  font-size: 1rem;
+  font-family: inherit;
+  border: none;
+  width: 100%;
+
+  border-radius: 20px;
+  background-color: #ffffff;
+  box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
 }
 
 .btn-submit {
-  width: fit-content;
-  font-family: "Poppins", sans-serif;
-  border-radius: 16px;
-  padding: 12px 24px;
-  border: 2px solid var(--primary-color);
-  color: black;
-  font-size: 24px;
-  margin-top: auto;
-  align-self: flex-end;
+  position: absolute;
+  inset: auto 0 -3em 0;
+
+  background-image: url("../assets/circle-check-regular.svg");
+  border-radius: 50%;
+  width: 5em;
+  height: 5em;
   cursor: pointer;
+
+  transition: translateY 0.5s;
 }
 
 .btn-submit:hover {
-  background: var(--primary-color);
+  background-image: url("../assets/circle-check-solid.svg");
   color: white;
 }
 
@@ -117,20 +133,6 @@ input[type="number"],
 input[type="search"],
 .btn-submit:focus {
   outline: none;
-}
-
-input[type="search"] {
-  display: block;
-  border: none;
-  padding: 1em;
-  margin: 1em auto;
-  font-size: 1rem;
-  font-family: inherit;
-  width: 90%;
-
-  border-radius: 20px;
-  background: #ffffff;
-  box-shadow: 20px 20px 60px #d9d9d9, -20px -20px 60px #ffffff;
 }
 
 .text-center {
@@ -142,70 +144,83 @@ input[type="search"] {
 }
 
 .check-button {
-  width: 40px;
-  height: 40px;
+  width: 2.5em;
+  height: 2.5em;
 
-  background: url("../assets/check-outline.svg");
-  background-size: contain;
+  background-color: inherit;
+  background-image: url("../assets/heart-regular.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
   margin-left: auto;
   cursor: pointer;
   border: none;
 }
 
 .check-button:hover {
-  background: url("../assets/check-solid.svg");
-  background-size: contain;
+  background-image: url("../assets/heart-solid.svg");
 }
 
 .trash-button {
-  width: 40px;
-  height: 40px;
+  width: 2.5em;
+  height: 2.5em;
 
-  background: url("../assets/trash-outline.svg");
-  background-size: contain;
-  margin-left: 16px;
+  background-color: inherit;
+  background-image: url("../assets/trash-outline.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin-left: 1em;
   cursor: pointer;
   border: none;
 }
 
 .trash-button:hover {
-  background: url("../assets/trash-fill.svg");
-  background-size: contain;
+  background-image: url("../assets/trash-solid.png");
 }
 
 .undo-button {
-  width: 40px;
-  height: 40px;
+  width: 2.5em;
+  height: 2.5em;
 
-  background: url("../assets/undo-ouline.svg");
-  background-size: contain;
+  background-color: inherit;
+  background-image: url("../assets/circle-xmark-regular.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
   margin-left: auto;
   cursor: pointer;
   border: none;
 }
 
 .undo-button:hover {
-  background: url("../assets/undo-ouline.svg");
-  background-size: contain;
+  background-image: url("../assets/circle-xmark-solid.svg");
 }
 
 .check-button:focus,
-.trash-button {
+.trash-button:focus,
+.undo-button:focus {
   outline: none;
 }
 
-@media only screen and (max-width: 1024px) {
-  .wrapper {
-    margin: 0;
-  }
+#start-booklist {
+  scroll-margin-top: 3em;
+}
 
+/* footer */
+footer {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: var(--primary-color);
+  padding: 2.5em;
+
+  background-color: #e0e0e0;
+  box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
+}
+
+@media only screen and (max-width: 1024px) {
   .wrapper .container {
-    width: 100%;
+    width: 90%;
   }
 
   .list-item {
-    width: 90%;
-    margin-inline: auto;
+    width: 100%;
   }
 
   .form {
