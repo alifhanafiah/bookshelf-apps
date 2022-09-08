@@ -115,21 +115,47 @@ const addBookToCompleted = (booklistId) => {
 };
 
 const removeBookFromCompleted = (booklistId) => {
-  const confirmRemove = confirm("Are you sure you want to remove this book?");
+  // mengambil index target
+  const booklistTarget = findBooklistIndex(booklistId);
 
-  if (confirmRemove) {
-    const booklistTarget = findBooklistIndex(booklistId);
+  // mengecek apakah booklist index ada atau tidak
+  if (booklistTarget === -1) return;
 
-    if (booklistTarget === -1) return;
+  const judulBuku = booklists[booklistTarget].title;
 
-    booklists.splice(booklistTarget, 1);
+  // sweet alert
+  Swal.fire({
+    title: `Hapus buku "${judulBuku}"`,
+    text: "Apakah anda yakin untuk menghapus buku ini?",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#183153",
+    cancelButtonColor: "#e0e0e0",
+    confirmButtonText: "Hapus",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      booklists.splice(booklistTarget, 1);
 
-    document.dispatchEvent(new Event(RENDER_EVENT));
+      document.dispatchEvent(new Event(RENDER_EVENT));
 
-    saveData();
-  } else {
+      saveData();
+
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: `Buku "${judulBuku}" telah berhasil terhapus`,
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }
+
     return;
-  }
+  });
+
+  // const confirmRemove = confirm("Are you sure you want to remove this book?");
+
+  // if (confirmRemove) {
+  // }
 };
 
 const undoBookFromCompleted = (booklistId) => {
