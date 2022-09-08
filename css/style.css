@@ -78,6 +78,13 @@ header h1 {
   align-items: center;
 }
 
+.item > .inner h2,
+.item > .inner p {
+  max-width: 40rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .item > .inner p {
   margin-block-start: 0.7em;
   font-weight: lighter;
@@ -225,7 +232,7 @@ footer {
 }
 
 /* mobile */
-@media screen and (max-width: 1140px) {
+@media screen and (max-width: 1104px) {
   :root {
     font-size: 10px;
   }
@@ -239,6 +246,11 @@ footer {
   .undo-button {
     width: 2em;
     height: 2em;
+  }
+
+  .item > .inner h2,
+  .item > .inner p {
+    max-width: 10rem;
   }
 }
 
